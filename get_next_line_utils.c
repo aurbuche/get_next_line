@@ -6,28 +6,28 @@
 /*   By: aurbuche <aurbuche@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 11:51:20 by aurbuche     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/11 16:23:08 by aurbuche    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/14 14:01:51 by aurbuche    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *str, int c)
+char			*ft_strchr(const char *str, int c)
 {
 	int		i;
 	char	*s;
 
 	s = (char*)str;
 	i = 0;
+	if (c == '\0' && *s == '\0')
+		return ((char*)s);
 	while (s[i])
 	{
 		if ((char)*s == c)
 			return ((char*)s);
 		s++;
 	}
-	if (c == '\0' && *s == '\0')
-		return ((char*)s);
 	return (0);
 }
 
@@ -72,25 +72,22 @@ char			*ft_strjoin(char const *s1, char const *s2)
 
 char			*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*dst;
-	int		i;
+	char	*tab;
+	size_t	i;
 
 	i = 0;
-	if (start > ft_strlen(s))
-		len = 0;
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	if (!(dst = malloc(sizeof(char) * (len + 1))))
+	if (!(s))
 		return (NULL);
-	while (len > 0 && s[start] != '\n')
+	if (!(tab = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (len--)
 	{
-		dst[i] = s[start];
-		len--;
-		start++;
+		tab[i] = s[start];
 		i++;
+		start++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	tab[i] = '\0';
+	return (tab);
 }
 
 char			*ft_strdup(const char *src)
