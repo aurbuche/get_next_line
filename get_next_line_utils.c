@@ -6,7 +6,7 @@
 /*   By: aurbuche <aurbuche@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 11:51:20 by aurbuche     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/14 14:01:51 by aurbuche    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 16:44:51 by aurbuche    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ size_t			ft_strlen(const char *str)
 	return (i);
 }
 
-char			*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char *s1, char const *s2)
 {
 	char	*s3;
 	int		i;
@@ -67,6 +67,7 @@ char			*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	s3[i] = '\0';
+	free(s1);
 	return (s3);
 }
 
